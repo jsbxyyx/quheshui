@@ -99,7 +99,7 @@ class MainWindow(QMainWindow):
 
     def close_error_dialog(self):
         print('close error dialog')
-        self.error_dialog.close()
+        self.error_dialog.hide()
 
     def closeEvent(self, event):
         print('close event')

@@ -5,11 +5,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
-from ui import icon_rc
 from ui import main_ui
-
-# 防止 from ui import icon_rc 被删掉
-icon_rc.qt_resource_name
 
 
 class MainWindow(QMainWindow):
@@ -51,7 +47,7 @@ class MainWindow(QMainWindow):
         self._quit_action = QAction()
         self._tray_icon_menu = QMenu()
         self.tray_icon = QSystemTrayIcon(self)
-        self.tray_icon.setIcon(QIcon(":/images/icon.png"))
+        self.tray_icon.setIcon(QIcon("ui/icon.png"))
         self.tray_icon.setToolTip("去喝水")
 
         self._restore_action = QAction("显示", self)

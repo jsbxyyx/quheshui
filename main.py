@@ -10,6 +10,7 @@ from ui import res_rc
 
 ___not_use = res_rc.qt_resource_name
 
+
 class MainWindow(QMainWindow):
 
     def __init__(self):
@@ -31,6 +32,7 @@ class MainWindow(QMainWindow):
         height = desktop.height()
         print(width, height)
         self.error_dialog = QWidget()
+        self.error_dialog.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.error_dialog.setLayout(QVBoxLayout())
         self.error_dialog.setWindowFlags(Qt.CustomizeWindowHint)
         self.error_dialog.setMinimumSize(width, height)
@@ -92,8 +94,12 @@ class MainWindow(QMainWindow):
 
         minute = now.minute
         seconds = now.second
-        if minute == 0 and seconds == 0:
-            QTimer.singleShot(30000, self.close_error_dialog)
+        show = (minute == 0 and 0 <= seconds <= 2)
+        close_time = 30000
+        # show = (seconds % 10 == 0)
+        # close_time = 5000
+        if show:
+            QTimer.singleShot(close_time, self.close_error_dialog)
             self.error_dialog.show()
         pass
 

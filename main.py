@@ -101,6 +101,7 @@ class MainWindow(QMainWindow):
         # close_time = 5000
         if show:
             QTimer.singleShot(close_time, self.close_error_dialog)
+            self.activateWindow()
             self.error_dialog.setFocus()
             self.error_dialog.show()
         pass

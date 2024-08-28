@@ -33,6 +33,7 @@ class MainWindow(QMainWindow):
         print(width, height)
         self.error_dialog = QWidget()
         self.error_dialog.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.error_dialog.setFocusPolicy(Qt.NoFocus)
         self.error_dialog.setLayout(QVBoxLayout())
         self.error_dialog.setWindowFlags(Qt.CustomizeWindowHint)
         self.error_dialog.setMinimumSize(width, height)
@@ -100,6 +101,7 @@ class MainWindow(QMainWindow):
         # close_time = 5000
         if show:
             QTimer.singleShot(close_time, self.close_error_dialog)
+            self.error_dialog.setFocus()
             self.error_dialog.show()
         pass
 
